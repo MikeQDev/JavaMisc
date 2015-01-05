@@ -61,11 +61,12 @@ public class CountDownGUI extends JFrame {
 		return new Thread(new Runnable() {
 			public void run() {
 				try {
-					for (int t = COUNTDOWNTIMESECS; t > 0; t--) {
-						countDownFields[timerNum].setText(t + "");
+					countDownFields[timerNum].setText(COUNTDOWNTIMESECS+"");
+					int curTime = COUNTDOWNTIMESECS;
+					while(curTime > 0){
 						Thread.sleep(1000);
+						countDownFields[timerNum].setText(--curTime + "");
 					}
-					countDownFields[timerNum].setText("0");
 				} catch (InterruptedException e) {
 					return;
 				}
